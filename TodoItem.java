@@ -13,9 +13,14 @@ public class TodoItem {
     Date deadline;
     String description;
     Boolean isImportant;
+    Boolean isDone = false;
 
     SimpleDateFormat dateFormat = new SimpleDateFormat ("dd.mm.yy");
     Scanner scan =  new Scanner(System.in);
+
+    public void mark() {
+        this.isDone = !this.isDone;
+    }
 
 
     public void setDeadline() throws ParseException {
@@ -55,7 +60,9 @@ public class TodoItem {
 
    public String toString() {
 
-       return String.format("%s   %s", dateFormat.format(this.deadline), description);
+       String mark = isDone ? "[x]" : "[ ]";
+
+       return String.format("%s %s  %s", dateFormat.format(this.deadline), mark, description);
 
    }
 
