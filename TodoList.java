@@ -9,6 +9,11 @@ public class TodoList{
     String name;
     ArrayList<TodoItem> todoList;
 
+    public TodoList(String name) {
+
+        this.name = name;
+    }
+
     public void add(TodoItem item) {
         
         todoList.add(item);
@@ -37,9 +42,13 @@ public class TodoList{
 
         String stringList = name + "\n";
 
-        for (int i = 1; i <= todoList.size(); i++) {
+        try{
+            for (int i = 1; i <= todoList.size(); i++) {
             stringList += String.format("(%d) %s \n", i, todoList.get(i-1).toString());
-        }
+            }
+            }catch (NullPointerException e) {
+                System.out.println("No tasks");
+            }
         return stringList;
     }
 
